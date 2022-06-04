@@ -56,7 +56,7 @@ class Solution:
             intOutPut, res = divmod(intOutPut, dec)
             resList.append(res)
 
-        #set linked list var
+        #set linked list val
         listNodeList = []
         for i in range(0, len(resList)):
             tempListNode = ListNode(resList[i])
