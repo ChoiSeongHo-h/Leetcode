@@ -3,6 +3,7 @@ https://github.com/TAVE-7-python-algorithm-study/algorithm-interview
 -> 9 세 수의 합 (★★/★★★)
 
 https://leetcode.com/problems/3sum/
+-> Time Limit Exceeded
 """
 
 class Solution:
