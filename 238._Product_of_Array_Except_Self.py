@@ -1,9 +1,6 @@
 """
-https://github.com/TAVE-7-python-algorithm-study/algorithm-interview
--> 11 자신을 제외한 배열의 곱 (★★/★★★)
-
 https://leetcode.com/problems/product-of-array-except-self/
--> Accepted
+-> Accepted (Medium)
 """
 
 class Solution:
