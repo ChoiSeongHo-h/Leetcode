@@ -1,3 +1,3 @@
-# python_algorithm_interview
+# Leetcode
 
 cpp / python
