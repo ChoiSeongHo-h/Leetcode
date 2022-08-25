@@ -1,9 +1,6 @@
 """
-https://github.com/TAVE-7-python-algorithm-study/algorithm-interview
--> 8 빗물 트래핑 (★★★/★★★)
-
 https://leetcode.com/problems/trapping-rain-water/
--> Time Limit Exceeded
+-> Time Limit Exceeded (Hard)
 """
 
 class Solution:
