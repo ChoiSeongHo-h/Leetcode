@@ -1,9 +1,6 @@
 """
-https://github.com/TAVE-7-python-algorithm-study/algorithm-interview
--> 19 역순 연결 리스트 II (★★/★★★)
-
 https://leetcode.com/problems/reverse-linked-list-ii/
--> Accepted
+-> Accepted (Medium)
 """
 
 class ListNode:
