@@ -1,9 +1,6 @@
 """
-https://github.com/TAVE-7-python-algorithm-study/algorithm-interview
--> 16 두 수의 덧셈 (★★/★★★)
-
 https://leetcode.com/problems/add-two-numbers/
--> Accepted
+-> Accepted (Medium)
 """
 
 class ListNode:
