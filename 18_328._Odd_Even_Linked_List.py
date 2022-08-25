@@ -1,9 +1,6 @@
 """
-https://github.com/TAVE-7-python-algorithm-study/algorithm-interview
--> 18 홀짝 연결 리스트 (★★/★★★)
-
 https://leetcode.com/problems/odd-even-linked-list/
--> Accepted
+-> Accepted (Medium)
 """
 
 class ListNode:
