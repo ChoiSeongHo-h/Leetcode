@@ -36,21 +36,20 @@ public:
         
 
         
-        vector<bool> modified(n, false);
+        vector<bool> isRoot(n, false);
         for(int root = 0; root<n; root++)
         {
             if(!participated[root])
                 continue;
-            if(groups[root] == vector<int>{})
+            if(groups[root][0] == -1)
                 continue;
                 
-            modified[root] = true;
+            isRoot[root] = true;
             
             queue<int> q;
             q.emplace(root);
             vector<bool> emplaced(n, false);
             emplaced[root] = true;
-            auto group = vector<int>{};
             while(!q.empty())
             {
                 int node = q.front();
@@ -61,20 +60,19 @@ public:
                     if(emplaced[i])
                         continue;
                     
-                    group.emplace_back(i);
                     emplaced[i] = true;
                     q.emplace(i);
+                    if(node != root)
+                        groups[root].emplace_back(i);
                 }
-                groups[node].clear();
+                groups[node][0] = -1;
             }
             
-            groups[root] = group;
         }
         
 
-        
         vector<int> sums;
-        int sum = 0;
+        long long sum = 0;
         for(int i = 0; i<n; i++)
         { 
             if(participated[i] == false)
@@ -82,7 +80,7 @@ public:
                 sums.emplace_back(1);
                 sum += 1;
             }
-            else if(modified[i] == true)
+            else if(isRoot[i] == true)
             {
                 sums.emplace_back((int)groups[i].size() + 1);
                 sum += (int)groups[i].size() + 1;
@@ -96,6 +94,7 @@ public:
             ans += (long long)sum*(long long)sums[i];
         }
         
+        //execption
         return ans;
     }
 };
