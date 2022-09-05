@@ -8,7 +8,7 @@ class Solution
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) 
     {
-        vector<map<int, int>> priceMaps(n);
+        vector<unordered_map<int, int>> priceMaps(n);
         for(int i = 0; i<flights.size(); i++)
         {
             int s = flights[i][0];
@@ -17,10 +17,9 @@ public:
             priceMaps[s][d] = p;
         }
         
-
-        queue<vector<int>> idxPriceQ;
+        queue<array<int, 2>> idxPriceQ;
         for(auto i : priceMaps[src])
-            idxPriceQ.emplace(vector<int>{i.first, i.second});
+            idxPriceQ.emplace(array<int, 2>{i.first, i.second});
         
         int depth = 0;
         int ans = 10e7;
@@ -28,13 +27,12 @@ public:
         while(!idxPriceQ.empty())
         {
             int qSz = idxPriceQ.size();
-            map<int, int> tempPaths;
+            unordered_map<int, int> tempPaths;
             while(qSz--)
             {
                 int idx = idxPriceQ.front()[0];
                 int prc = idxPriceQ.front()[1];
                 idxPriceQ.pop();
-                
                 
                 if(prc > ans)
                     continue;
@@ -44,7 +42,6 @@ public:
                 
                 if(depth == k)
                     isFin = true;
-                
                 
                 if(priceMaps.size() == 0)
                     continue;
@@ -60,7 +57,7 @@ public:
             }
             depth++;
             for(auto i : tempPaths)
-                idxPriceQ.emplace(vector<int>{i.first, i.second});
+                idxPriceQ.emplace(array<int, 2>{i.first, i.second});
                 
             if(isFin)
                 break;
