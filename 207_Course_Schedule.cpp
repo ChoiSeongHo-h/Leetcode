@@ -11,14 +11,14 @@ public:
         if(prerequisites.size() == 0)
             return true;
         
-        unordered_map<int, unordered_set<int>> prereqMap;
+        vector<vector<int>> prereqMap(numCourses);
         unordered_set<int> heads;
         for(auto& prerequisite : prerequisites)
         {
             if(prerequisite[0] == prerequisite[1])
                 return false;
             
-            prereqMap[prerequisite[0]].emplace(prerequisite[1]);
+            prereqMap[prerequisite[0]].emplace_back(prerequisite[1]);
             auto childPrereq = heads.find(prerequisite[1]);
             if(childPrereq != heads.end())
                 heads.erase(childPrereq);
