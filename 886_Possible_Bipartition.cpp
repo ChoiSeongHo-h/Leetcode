@@ -8,11 +8,11 @@ class Solution
 public:
     bool possibleBipartition(int n, vector<vector<int>>& dislikes) 
     {
-        vector<unordered_set<int>> connections(n);
+        vector<vector<int>> connections(n);
         for(auto& dislike : dislikes)
         {
-            connections[dislike[0]-1].emplace(dislike[1]-1);
-            connections[dislike[1]-1].emplace(dislike[0]-1);
+            connections[dislike[0]-1].emplace_back(dislike[1]-1);
+            connections[dislike[1]-1].emplace_back(dislike[0]-1);
         }
       
         vector<int> colors(n, 0);
