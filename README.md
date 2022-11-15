@@ -5,7 +5,7 @@
 00002_Add_Two_Numbers.py
 
 00005_Longest_Palindromic_Substring.cpp   
-😀 n 문자열에서 가장 긴 대치 문자열 반환
+n 문자열에서 가장 긴 대치 문자열 반환
 n = 1000 -> n^2   
 0 : vec left, right, len   
 1 : 같은 문자로 이루어진 문자열을 찾아 vec에 좌우 인덱스와 길이 저장. ex aaa   
@@ -16,7 +16,7 @@ n = 1000 -> n^2
 00015._3Sum.py 
 
 00022_Generate_Parentheses.cpp   
-😀 '(' 와 ')'를 n번 써서 모든 닫힌 괄호 조합 만들기   
+'(' 와 ')'를 n번 써서 모든 닫힌 괄호 조합 만들기   
 n = 8   
 0 : 중복을 제거할 vector<uset> subMaps생성   
 -> subMaps[i]에 i쌍으로 구성된 조합이 포함됨   
