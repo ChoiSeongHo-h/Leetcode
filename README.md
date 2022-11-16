@@ -70,10 +70,10 @@ m, n = 100
 그리드를 1d로 보고 이진탐색   
 0 : left=0, right=mn, mid=(right+left)/2   
 1 : if target < x, right=mid    
--> else left=mid+1
+-> else left=mid+1   
 🎯 left는 서치 idx 포함, right는 서치 idx 벗어남     
 🎯 mid는 나누기가 반복되면 왼쪽으로 치우침   
-🎯 따라서 치우침을 보정하기 위해 right=mid or left=mid+1
+🎯 따라서 치우침을 보정하기 위해 right=mid or left=mid+1   
 
 00743_Network_Delay_Time.cpp   
 -
