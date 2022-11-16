@@ -3,10 +3,12 @@
 리트코드 문풀(cpp / python)
 
 00002_Add_Two_Numbers.py
+-
 
 00005_Longest_Palindromic_Substring.cpp   
+-
 n 문자열에서 가장 긴 대치 문자열 반환
-n = 1000 -> n^2   
+n = 1000 -> O(n^2)   
 0 : vec left, right, len   
 1 : 같은 문자로 이루어진 문자열을 찾아 vec에 좌우 인덱스와 길이 저장. ex aaa   
 2 : 좌우가 같으며 중앙이 다른 길이가 3인 문자열을 찾아 마찬가지로 vec에 저장. ex aba   
@@ -14,8 +16,10 @@ n = 1000 -> n^2
 🎯 aaa, aba를 따로 모은다는 발상
 
 00015._3Sum.py 
+-
 
-00022_Generate_Parentheses.cpp   
+00022_Generate_Parentheses.cpp  
+- 
 '(' 와 ')'를 n번 써서 모든 닫힌 괄호 조합 만들기   
 n = 8   
 0 : 중복을 제거할 vector<uset> subMaps생성   
@@ -26,7 +30,53 @@ combine : a+b=i인 subMaps[a]와 subMaps[b]의 원소를 섞어 생성
 generate : subMaps[i-1]의 모든 원소들의 왼쪽에 '(', 오른쪽에 ')'를 붙혀 감싸줌   
 🎯 상위집합은 하위 집합으로 구성 가능하며 combine과 generate로 나뉠 수 있다는 발상   
 
+00024_Swap_Nodes_in_Pairs.py
+-
+
+00042_Trapping_Rain_Water.py
+-
+
+00045_Jump_Game_II.cpp   
+-
+길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 닿을 수 있는 최소 점프 수는?   
+n = 10e4, x = 10e3 -> O(nj)   
+0 : i까지 최소 점프 수를 나타나는 vec jumps 선언    
+1 : for i < n, jumps[i]를 작성    
+2 : for i+1 < j < i+x, jumps[j]를 조사    
+-> 만약 jumps[j]가 jumps[i]+1보다 작다면 jumps[i]+1로 대체     
+--> jumps[i]에서 점프 한번 내에 도달할 수 있다면     
+
+00055_Jump_Game.cpp
+-
+길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 닿을 수 있는가?   
+n = 10e4, x = 10e5    
+점프하여 중간에 끊김이 없어야 함   
+0 : 최대 도달 idx를 나타내는 reach 선언    
+1 : for i < n, reach가 idx보다 작으면 끊긴것. false    
+-> 그렇지 않으면 reach = max(reach, i+x)     
+
+00062_Unique_Paths.cpp
+-
+m*n 그리드에서 오른쪽 아래로 가는 unique pathes 수를 반환    
+m, n = 100   
+1. for tale[i][j] = table[i-1][j]+table[i][j-1]   
+
+00074_Search_a_2D_Matrix.cpp
+-
+m*n 그리드에서 targe을 찾으려 함    
+그리드 : 좌우, 상하 방향으로 값 x가 정렬됨    
+-10e4 < x, target < 10e4    
+m, n = 100    
+그리드를 1d로 보고 이진탐색   
+0 : left=0, right=mn, mid=(right+left)/2   
+1 : if target < x, right=mid    
+-> else left=mid+1
+🎯 left는 서치 idx 포함, right는 서치 idx 벗어남     
+🎯 mid는 나누기가 반복되면 왼쪽으로 치우침   
+🎯 따라서 치우침을 보정하기 위해 right=mid or left=mid+1
+
 00743_Network_Delay_Time.cpp   
+-
 그래프 모든 n노드 방문시 소요되는 최소 cost 반환   
 그래프 : weighted, 단방향성   
 노드 : 유니크함   
