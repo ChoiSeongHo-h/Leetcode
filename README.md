@@ -116,6 +116,34 @@ n = 10e4
 2 : 전역으로 이전 노드를 포인팅하는 포인터 선언   
 3 : 만약 depth-wise 첫 노드가 아니라면 이전 노드의 next가 현 노드를 가리키게 함   
 
+00134_Gas Station.cpp   
+-
+n vec gas, cost가 주어짐, 각 i에서 충전량, 소모량을 나타냄, 어떤 i에서 시작해야 주유소를 circular 순회할 수 있는가?    
+n = 10e5 -> O(n)  
+해는 유일    
+1 : vec gap을 선언하여 순수 이득을 계산    
+2 : net을 선언하여 1 cycle 순수 이득 net을 대입    
+3 : n까지 순회하며 i에서 왼쪽 net netL, 오른쪽 net netR을 계산    
+-> 초기에 0, net이며, gap[i]를 각각 빼고 더하여 구할 수 있음    
+-> 해가 유일하므로 순 이득이 나는 곳은 하나임    
+--> 이 곳은 netR이 최대화됨    
+4 : netR이 최대화되는 곳을 찾음    
+🎯 왼쪽 net, 오른쪽 net의 성질을 관찰    
+
+300_Longest_Increasing_Subsequence.cpp
+-
+nums를 입력받을 때 가장 긴 증가하는 부분수열의 최디 길이는?    
+-10e4 <= nums[i] <= 10e4    
+1 : 길이를 반환할 vec arr 선언    
+2 : for num : nums[i]에 대해 만약 arr.back()보다 num이 크다면 arr 뒤에 추가    
+-> 갯수 증가    
+3 : 그렇지 않다면 arr의 원소 중 num보다 간신히 크거나 같은 원소를 num으로 대체    
+-> 갯수 유지    
+-> 이를 이진탐색으로 찾을 수 있음    
+🎯 lower_bound(arr.begin(), arr.end(), num) 정렬된 arr에 대해 num보다 크고 최솟값을 갖는 포인터를 반환    
+🎯 한편 이진탐색을 직접 구현하기 위해서는, arr가 이미 정렬되었기 때문에 i-1, i+1 양쪽의 값을 비교할 필요 없음.   
+-> 한 쪽만 비교하면 됨    
+
 00435_Non-overlapping_Intervals.cpp    
 -    
 시간 [a, b]가 n개 주어질 때 최소 몇개 쌍을 제거해야 겹침이 없을까 ?    
