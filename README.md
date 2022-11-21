@@ -9,7 +9,7 @@ https://leetcode.com/problems/add-two-numbers/
 00005_Longest_Palindromic_Substring.cpp   
 -
 https://leetcode.com/problems/longest-palindromic-substring/   
-n 문자열에서 가장 긴 대치 문자열 반환
+n 문자열에서 가장 긴 대치 문자열 반환   
 n = 1000 -> O(n^2)   
 1 : vec left, right, len   
 2 : 같은 문자로 이루어진 문자열을 찾아 vec에 좌우 인덱스와 길이 저장. ex aaa   
