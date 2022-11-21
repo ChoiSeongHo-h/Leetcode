@@ -4,9 +4,11 @@
 
 00002_Add_Two_Numbers.py
 -
+https://leetcode.com/problems/add-two-numbers/   
 
 00005_Longest_Palindromic_Substring.cpp   
 -
+https://leetcode.com/problems/longest-palindromic-substring/   
 n 문자열에서 가장 긴 대치 문자열 반환
 n = 1000 -> O(n^2)   
 1 : vec left, right, len   
@@ -17,9 +19,11 @@ n = 1000 -> O(n^2)
 
 00015._3Sum.py 
 -
+https://leetcode.com/problems/3sum/   
 
 00022_Generate_Parentheses.cpp  
 - 
+https://leetcode.com/problems/generate-parentheses/   
 '(' 와 ')'를 n번 써서 모든 닫힌 괄호 조합 만들기   
 n = 8   
 1 : 중복을 제거할 vector<uset> subMaps생성   
@@ -32,12 +36,15 @@ generate : subMaps[i-1]의 모든 원소들의 왼쪽에 '(', 오른쪽에 ')'�
 
 00024_Swap_Nodes_in_Pairs.py
 -
+https://leetcode.com/problems/swap-nodes-in-pairs/   
 
 00042_Trapping_Rain_Water.py
 -
+https://leetcode.com/problems/trapping-rain-water/   
 
 00045_Jump_Game_II.cpp   
 -
+https://leetcode.com/problems/jump-game-ii/   
 길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 닿을 수 있는 최소 점프 수는?   
 n = 10e4, x = 10e3 -> O(nj)   
 1 : i까지 최소 점프 수를 나타나는 vec jumps 선언    
@@ -48,6 +55,7 @@ n = 10e4, x = 10e3 -> O(nj)
 
 00055_Jump_Game.cpp
 -
+https://leetcode.com/problems/jump-game/   
 길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 닿을 수 있는가?   
 n = 10e4, x = 10e5    
 점프하여 중간에 끊김이 없어야 함   
@@ -57,12 +65,14 @@ n = 10e4, x = 10e5
 
 00062_Unique_Paths.cpp
 -
+https://leetcode.com/problems/generate-parentheses/   
 m*n 그리드에서 오른쪽 아래로 가는 unique pathes 수를 반환    
 m, n = 100   
 1. for tale[i][j] = table[i-1][j]+table[i][j-1]   
 
 00074_Search_a_2D_Matrix.cpp
 -
+https://leetcode.com/problems/search-a-2d-matrix/   
 m*n 그리드에서 targe을 찾으려 함    
 그리드 : 좌우, 상하 방향으로 값 x가 정렬됨    
 -10e4 < x, target < 10e4    
@@ -77,9 +87,11 @@ m, n = 100
 
 00092_Reverse_Linked_List_II.py   
 -
+https://leetcode.com/problems/reverse-linked-list-ii/   
 
 00097_Interleaving_String.cpp   
 -
+https://leetcode.com/problems/interleaving-string/   
 str s1 s2를 잘 섞어 s3을 만들 수 있는가?     
 len(s1), len(s2) = 100
 1 : 2차원 (s1_sz+1)*(s2_sz+1) dp 테이블 생성    
@@ -91,6 +103,7 @@ len(s1), len(s2) = 100
 
 00098_Validate_Binary_Search_Tree.cpp    
 -    
+https://leetcode.com/problems/validate-binary-search-tree/   
 n노드 이진 탐색 트리가 맞나 검사    
 n = 10e4    
 각 노드 값은 하항과 상한을 가짐    
@@ -105,12 +118,14 @@ n = 10e4
 
 00107_Binary_Tree_Level_Order_Traversal_II.cpp   
 -
+https://leetcode.com/problems/binary-tree-level-order-traversal-ii/   
 이진트리 값을 depth-wise로 반환   
 1 : 이진트리를 depth-wise로 순회    
 2 : depth-wise 생성된 vec에 값 삽입, depth가 끝나면 vec 요소를 옮겨담음    
 
 00117_Populating Next_Right_Pointers_in_Each_Node_II.cpp    
 -
+https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/   
 이진트리를 depth-wise 순회하며 왼쪽노드의 next가 오른쪽 노드를 포인팅하게 함    
 1 : 이진트리를 depth-wise 순회    
 2 : 전역으로 이전 노드를 포인팅하는 포인터 선언   
@@ -118,6 +133,7 @@ n = 10e4
 
 00134_Gas Station.cpp   
 -
+https://leetcode.com/problems/gas-station/   
 n vec gas, cost가 주어짐, 각 i에서 충전량, 소모량을 나타냄, 어떤 i에서 시작해야 주유소를 circular 순회할 수 있는가?    
 n = 10e5 -> O(n)  
 해는 유일    
@@ -130,9 +146,26 @@ n = 10e5 -> O(n)
 4 : netR이 최대화되는 곳을 찾음    
 🎯 왼쪽 net, 오른쪽 net의 성질을 관찰    
 
-300_Longest_Increasing_Subsequence.cpp
+00152_Maximum_Product_Subarray.cpp    
 -
-nums를 입력받을 때 가장 긴 증가하는 부분수열의 최디 길이는?    
+https://leetcode.com/problems/maximum-product-subarray/   
+n길이 nums의 곱이 최대가 되는 연속적인 subarray의 곱을 구함      
+n = 10e4 -> O(n)   
+1 : 0 사이의 subarrays를 구함      
+2 : 1의 subarrays[i]에 음수가 짝수개면 그대로 후보에 포함   
+3 : 1의 subarrays[i]에 음수가 홀수개면 뒤의 음수를 하나 뺀 subarray와 앞의 음수를 하나 뺀 subarrays를 후보에 포함   
+-> 3 -1 2 5 3 -1 -1   
+--> (3 -1 2 5 3 -1) -1 and 3 -1 (2 5 3 -1 -1)   
+-> 음수를 짝수개로 맞춘다는 뜻   
+4 : 후보를 모두 곱하여 최종 결과 계산   
+🎯 음수가 짝수개이기만 한다면, subarray가 길면 길수록 값이 커지거나 같다는 발상       
+
+
+
+00300_Longest_Increasing_Subsequence.cpp
+-
+https://leetcode.com/problems/longest-increasing-subsequence/    
+nums를 입력받을 때 가장 긴 증가하는 부분수열의 최대 길이는?    
 -10e4 <= nums[i] <= 10e4    
 1 : 길이를 반환할 vec arr 선언    
 2 : for num : nums[i]에 대해 만약 arr.back()보다 num이 크다면 arr 뒤에 추가    
@@ -144,8 +177,31 @@ nums를 입력받을 때 가장 긴 증가하는 부분수열의 최디 길이�
 🎯 한편 이진탐색을 직접 구현하기 위해서는, arr가 이미 정렬되었기 때문에 i-1, i+1 양쪽의 값을 비교할 필요 없음.   
 -> 한 쪽만 비교하면 됨    
 
+00337_House_Robber_III.cpp
+-
+https://leetcode.com/problems/house-robber-iii/   
+n 노드를 가진 이진트리를 순회할 때 인접하지 않은 노드 값 합의 최대값은?     
+n = 10e4 -> O(n)     
+1 : 재귀적으로 순회     
+-> 반복적으로 순회하기에는 당해 노드의 포함 / 비포함을 생각하기 쉽지 않음     
+1-1 : 당해 노드를 사용하는 경우 순회     
+-> 당해 노드 값 + 좌 노드 사용하지 않을 때의 값 + 우 노드 사용하지 않을 때의 값     
+1-2 : 당해 노드를 사용하지 않는 경우 순회     
+-> max(좌 노드 사용하지 않을 때의 값, 좌 노드 사용할 때의 값) +   
+max(우 노드 사용하지 않을 때의 값, 우 노드 사용할 때의 값)     
+1-3 : 위 둘을 비교하여 큰 것을 사용   
+2 : 한편 단순 위처럼만 생각하면 시간 오버    
+-> 한 노드를 방문하면 계속해서 use, not use 모두 계산하므로   
+-> umap 사용   
+--> 사용할 경우, 사용하지 않을 경우 둘 모두의 umap을 만듦   
+---> 그렇지 않으면, 예컨데 use -> not use 순으로 한 노드를 검사할 때, 그 노드의 값은 use에 의해서만 결정됨   
+🎯 순회문제를 재귀적, 반복적 양 면으로 바라보는 능력    
+🎯 umap은 pt를 쿼리로 받을 수 있음        
+🎯 순회시 O(n)이 아니라면 캐시를 고려    
+
 00435_Non-overlapping_Intervals.cpp    
 -    
+https://leetcode.com/problems/non-overlapping-intervals/   
 시간 [a, b]가 n개 주어질 때 최소 몇개 쌍을 제거해야 겹침이 없을까 ?    
 n = 10e5    
 -10e5 < a, b, <10e5    
@@ -160,6 +216,7 @@ O(nlog(n))
 
 00743_Network_Delay_Time.cpp   
 -
+https://leetcode.com/problems/network-delay-time/   
 그래프 모든 n노드 방문시 소요되는 최소 cost 반환   
 그래프 : weighted, 단방향성   
 노드 : 유니크함   
@@ -184,6 +241,7 @@ n = 100
 
 00945_Minimum_Increment_to_Make_Array_Unique.cpp   
 -
+https://leetcode.com/problems/minimum-increment-to-make-array-unique/   
 n배열이 주어질 때 원소의 값 x를 바꾸어, 중복없애기 위한 최소 코스트는?   
 코스트 : x를 1 바꿀 때 마다 1   
 n, x = 10e5   
