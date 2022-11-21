@@ -68,7 +68,7 @@ n = 10e4, x = 10e5
 https://leetcode.com/problems/generate-parentheses/   
 m*n 그리드에서 오른쪽 아래로 가는 unique pathes 수를 반환    
 m, n = 100   
-1. for tale[i][j] = table[i-1][j]+table[i][j-1]   
+1 : for tale[i][j] = table[i-1][j]+table[i][j-1]   
 
 00074_Search_a_2D_Matrix.cpp
 -
