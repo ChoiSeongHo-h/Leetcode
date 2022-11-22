@@ -160,7 +160,24 @@ n = 10e4 -> O(n)
 4 : 후보를 모두 곱하여 최종 결과 계산   
 🎯 음수가 짝수개이기만 한다면, subarray가 길면 길수록 값이 커지거나 같다는 발상       
 
-
+00153_Find_Minimum_in_Rotated_Sorted_Array.cpp   
+-
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/   
+전체를 circular shift하여 정렬할 수 있는 n길이 nums가 주어질 때 최소값을 log(n)으로 찾아라    
+nums는 [4,5,6,7,0,1,2]와 같이 주어짐       
+-> 0을 찾아야 함       
+1 : 이진탐색하는 구간에서 좌측 값이 우측 값보다 커야 함       
+-> ex : [0 1 2]       
+-> 이 경우 좌측값을 ret       
+--> 오직 이 경우에만 찾을 수 있음       
+---> 이 경우가 아니라면 무조건 좌측 값이 우측보다 큼       
+2 : 좌측 값이 중간 값보다 작다면 구간을 오른쪽으로 설정       
+-> if(nums[left] < nums[mid]) then, left = mid+1       
+3 : 좌측 값이 중간 값보다 크다면 구간을 왼쪽으로 설정       
+-> else then, right = mid;       
+🎯 이 경우 초기 right는 n-1을 가짐       
+🎯 마찬가지로 나누기를 반복하며 구간이 왼쪽으로 치우쳐지므로 이를 보정       
+🎯 구간 재설정 방법(2, 3)을 생각해 볼만 함       
 
 00300_Longest_Increasing_Subsequence.cpp
 -
@@ -238,6 +255,28 @@ n = 100
 🎯 순서 결정이 모호하면 방문시 visited 결정    
 🎯 tb의 가장 외각은 vec -> 노드가 주어지고 임의 접근할 것이기 때문   
 🎯 tb의 inner는 vec -> 어차피 다음 방문 지역을 다 우선순위 큐에 넣을 것이므로   
+
+00881_Boats_to_Save_People.cpp
+-
+https://leetcode.com/problems/boats-to-save-people/   
+사람의 각 무게 people이 주어짐, 2명씩, 무게 limit 한도로 실을 수 있는 배의 최소 필요량은?   
+len(people) = 5*10e4   
+limit = 3*10e4   
+1 : 무게 히스토그램을 map으로 만듦   
+2 : 다음을 반복   
+2-1 : map back의 무게가 limit보다 크다면 back을 제거하고 개수를 카운트   
+2-2 : map back의 무게가 limit보다 크지 않다면, front의 개수가 back의 개수보다 많은 경우, 적은 경우 같은 경우를 나누어 해결   
+-> ex : front가 많다면 front의 개수를 back의 개수만큼 줄이고 back을 제거   
+2-3 : 한편 front와 back이 같은 것을 나타낼 때 예외처리를 둠   
+🎯 while(!histogram.empty())로 쉽게 루프 구성 가능   
+🎯 위에서는 front, back을 사용했지만 실 구현에서는 begin, end -> end-- 사용에 주의, 대신 prev(end) 권장   
+혹은   
+1 : people을 정렬하고 투포인터 사용   
+2 : 포인팅 원소의 무게가 limit을 초과하면 오른쪽 포인터만 왼쪽으로   
+3 : 초과하지 않는다면 왼쪽 포인터를 오른쪽으로, 오른쪽 포인터를 왼쪽으로   
+🎯 히스토그램이나 정렬로 모두 풀 수 있음   
+
+
 
 00945_Minimum_Increment_to_Make_Array_Unique.cpp   
 -
