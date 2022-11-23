@@ -45,13 +45,13 @@ https://leetcode.com/problems/trapping-rain-water/
 00045_Jump_Game_II.cpp   
 -
 https://leetcode.com/problems/jump-game-ii/   
-길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 닿을 수 있는 최소 점프 수는?   
+길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 도달 가능 한 최소 점프 수는?   
 n = 10e4, x = 10e3 -> O(nj)   
 1 : i까지 최소 점프 수를 나타나는 vec jumps 선언    
 2 : for i < n, jumps[i]를 작성    
-3 : for i+1 < j < i+x, jumps[j]를 조사    
--> 만약 jumps[j]가 jumps[i]+1보다 작다면 jumps[i]+1로 대체     
---> jumps[i]에서 점프 한번 내에 도달할 수 있다면     
+2-1 : for i+1 < j < i+x, jumps[j]를 조사    
+-> jumps[j] = min(jumps[j], jumps[i]+1)     
+--> jumps[i]에서 점프 한번 내에 도달 vs 기존 값     
 
 00055_Jump_Game.cpp
 -
@@ -208,8 +208,6 @@ prerequisites에 사이클이 생기나 검사해야 함
 -> depth와 path로 구성된 dfs로 조사    
 🎯 done을 두어 visited와는 별개로, 이미 조사한 사이클에 대한 반복을 피함    
 
-
-
 00300_Longest_Increasing_Subsequence.cpp
 -
 https://leetcode.com/problems/longest-increasing-subsequence/    
@@ -306,8 +304,6 @@ limit = 3*10e4
 2 : 포인팅 원소의 무게가 limit을 초과하면 오른쪽 포인터만 왼쪽으로   
 3 : 초과하지 않는다면 왼쪽 포인터를 오른쪽으로, 오른쪽 포인터를 왼쪽으로   
 🎯 히스토그램이나 정렬로 모두 풀 수 있음   
-
-
 
 00945_Minimum_Increment_to_Make_Array_Unique.cpp   
 -
