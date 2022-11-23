@@ -227,6 +227,31 @@ prerequisites에 사이클이 생기나 검사해야 함
 -> depth와 path로 구성된 dfs로 조사    
 🎯 done을 두어 visited와는 별개로, 이미 조사한 사이클에 대한 반복을 피함    
 
+00209_Minimum_Size_Subarray_Sum.cpp    
+-
+nums의 subarray 합이 target보다 크거나 같게 되는 subarray 최소 길이는?    
+1 <= target <= 10e9    
+len(nums) = 10e5    
+1 <= nums[i] <= 104    
+1 : l2r 누적 합 배열 acc_sum을 구성    
+-> len(acc_sum) = len(nums)+1    
+-> 오름차순    
+2 : len_lower = 2, len_upper = nums.size()로 초기화    
+2-1 : 국지적으로 보장된 len을 저장 할 succ_lower를 선언    
+3 : while(len_lower < len_upper)    
+3-1 : len = (len_lower+len_upper)/2    
+3-2 : for 0 < i < acc_sum.size()-len 까지 다음을 검사    
+3-2-1 : consq_sum = acc_sum[i+len] - acc_sum[i]    
+-> 구간 합을 의미    
+3-2-2 : consq_sum >= target ? succ_lower 갱신    
+3-2-3 : 갱신되었다면 len_upper = len, 그렇지 않다면 len_lower = len+1    
+🎯 배열의 원소가 모두 양수이므로, 누적합은 오름차순    
+🎯 우측을 탐색할 때 len_lower = len+1     
+한편   
+1 : 국소 최솟값 ans 선언   
+2 : 투포인터를 움직여가며 구간합이 target 이상이라면, ans = min(ans, 구간합)    
+🎯 모두 양수이므로 투포인터 사용 가능    
+
 00300_Longest_Increasing_Subsequence.cpp
 -
 https://leetcode.com/problems/longest-increasing-subsequence/    
@@ -364,7 +389,7 @@ m. n = 10
 🎯 freshs, rottens를 운용, rottens가 빌 때까지 freshs가 비지 않는다면 실패    
 🎯 임시 객체 candidates를 두어 모아두었다가 나중에 한번에 추가 / 삭제    
 -> 혼란을 방지    
-한편, 모범코드를 관찰하면   
+한편   
 🎯 rottens를 set으로 두지 않고 queue로 운용     
 -> 자동적으로 사용된 rotten은 제거됨    
 --> 유효하지 않더라도 새로운 원소를 추가하지 못 하고 제거됨   
