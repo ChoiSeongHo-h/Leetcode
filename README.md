@@ -199,7 +199,8 @@ nums는 [4,5,6,7,0,1,2]와 같이 주어짐
 🎯 구간 재설정 방법(2, 3)을 생각해 볼만 함       
 
 00207_Course_Schedule.cpp    
--    
+-     
+https://leetcode.com/problems/course-schedule/    
 numCourses와 prerequisites[i] = [ai, bi]이 주어짐. b를 들어야 a를 들을 수 있을 때, numCourses만큼 수업을 들을 수 있는가?    
 numCourses = 2000    
 len(prerequisites) = 5000    
@@ -228,7 +229,8 @@ prerequisites에 사이클이 생기나 검사해야 함
 🎯 done을 두어 visited와는 별개로, 이미 조사한 사이클에 대한 반복을 피함    
 
 00209_Minimum_Size_Subarray_Sum.cpp    
--
+-   
+https://leetcode.com/problems/minimum-size-subarray-sum/   
 nums의 subarray 합이 target보다 크거나 같게 되는 subarray 최소 길이는?    
 1 <= target <= 10e9    
 len(nums) = 10e5    
