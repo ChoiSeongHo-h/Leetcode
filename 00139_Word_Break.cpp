@@ -12,6 +12,9 @@ public:
         possibles[0] = true;
         for(int idx = 0; idx < s.length(); ++idx)
         {
+            if(possibles[idx+1])
+                continue;
+                
             for(auto& word : wordDict)
             {
                 if(idx+1 < word.length())
