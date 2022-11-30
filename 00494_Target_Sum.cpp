@@ -6,23 +6,25 @@ https://leetcode.com/problems/target-sum/
 class Solution 
 {
 public:
-    vector<int> numsG;
-    int targetG;
+    vector<vector<int>> dp;
+
+    int search(vector<int>& nums, int target, int idx, int acc)
+    {
+        if(idx == nums.size())
+            return acc == target;
+        
+        int next0 = acc+nums[idx]+1000;
+        if(dp[idx][next0] == -9999)
+            dp[idx][next0] = search(nums, target, idx+1, next0-1000);
+        int next1 = acc-nums[idx]+1000;
+        if(dp[idx][next1] == -9999)
+            dp[idx][next1] = search(nums, target, idx+1, next1-1000);
+        return dp[idx][next0]+dp[idx][next1];
+    }
+
     int findTargetSumWays(vector<int>& nums, int target) 
     {
-        numsG = nums;
-        targetG = target;
-        return GetAllCase(0, 0);
-    }
-    int GetAllCase(int idx, int acc)
-    {
-        if(idx == numsG.size()-1)
-        {
-            int s = acc+numsG[idx] == targetG;
-            s += acc-numsG[idx] == targetG;
-            return s;
-        }
-        
-        return GetAllCase(idx+1, acc+numsG[idx]) + GetAllCase(idx+1, acc-numsG[idx]);
+        dp = vector<vector<int>>(nums.size(), vector<int>(2001, -9999));
+        return search(nums, target, 0, 0);
     }
 };
