@@ -12,12 +12,12 @@ public:
             return 0;
         
         vector<int> good_coins;
-        for(auto i : coins)
+        for(auto coin : coins)
         {
-            if (i>amount)
+            if (coin>amount)
                 continue;
             
-            good_coins.emplace_back(i);
+            good_coins.emplace_back(coin);
         }
         int coins_sz = good_coins.size();
         
