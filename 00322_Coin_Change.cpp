@@ -11,25 +11,25 @@ public:
         if(amount == 0)
             return 0;
         
-        vector<int> cs;
+        vector<int> good_coins;
         for(auto i : coins)
         {
             if (i>amount)
                 continue;
             
-            cs.emplace_back(i);
+            good_coins.emplace_back(i);
         }
-        int cSz = cs.size();
+        int coins_sz = good_coins.size();
         
         queue<array<int, 2>> bfsQ;
-        unordered_map<int, int> emplaced;
-        for(int i = 0; i<cSz; i++)
+        vector<int> emplaced(amount+1, 0);
+        for(int i = 0; i<coins_sz; i++)
         {
             array<int, 2> input;
-            input[0] = cs[i];
+            input[0] = good_coins[i];
             input[1] = 1;
             bfsQ.emplace(input);
-            emplaced.emplace(input[0], input[1]);
+            emplaced[input[0]] = 1;
         }
         
         int ans = 10e4;
@@ -38,25 +38,23 @@ public:
             auto node = bfsQ.front();
             bfsQ.pop();
             
-            
-            if(node[0] > amount)
-                continue;
-            
             if(node[0] == amount)
-                ans = min(ans, node[1]);
+                return node[1];
             
-            for(int i = 0; i<cSz; i++)
+            for(int i = 0; i<coins_sz; i++)
             {
                 array<int, 2> next;
-                next[0] = node[0] + cs[i];
+                next[0] = node[0] + good_coins[i];
+                if(next[0] > amount)
+                    continue;
+
                 next[1] = node[1] + 1;
-                if(emplaced.find(next[0]) == emplaced.end() || emplaced[next[0]] > next[1])
+                if(emplaced[next[0]] == 0)
                 {
                     bfsQ.emplace(next);
-                    emplaced.emplace(next[0], next[1]);
+                    emplaced[next[0]] = 1;
                 }
             }
-            
         }
         
         if(ans == 10e4)
