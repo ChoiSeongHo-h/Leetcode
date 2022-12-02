@@ -26,7 +26,7 @@ public:
         while(!city_price_q.empty())
         {
             int sz = city_price_q.size();
-            unordered_map<int, int> next_city_price_map;
+            unordered_map<int, int> best_price_map;
             while(sz--)
             {
                 int city = city_price_q.front()[0];
@@ -41,19 +41,19 @@ public:
                 
                 for(auto city_price : city_price_map[city])
                 {
-                    if(next_city_price_map.find(city_price.first) == next_city_price_map.end())
-                        next_city_price_map[city_price.first] = 10e7;
+                    if(best_price_map.find(city_price.first) == best_price_map.end())
+                        best_price_map[city_price.first] = 10e7;
                     
-                    int origin = next_city_price_map[city_price.first];
-                    next_city_price_map[city_price.first] = min(origin, city_price.second+price);
+                    int origin = best_price_map[city_price.first];
+                    best_price_map[city_price.first] = min(origin, city_price.second+price);
                 }
             }
             depth++;
             if(depth == k+1)
                 break;
 
-            for(auto next_city_price : next_city_price_map)
-                city_price_q.emplace(array<int, 2>{next_city_price.first, next_city_price.second});
+            for(auto best_price : best_price_map)
+                city_price_q.emplace(array<int, 2>{best_price.first, best_price.second});
         }
         if (ans == 10e7)
             return -1;
