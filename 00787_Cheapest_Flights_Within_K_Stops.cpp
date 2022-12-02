@@ -8,61 +8,53 @@ class Solution
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) 
     {
-        vector<unordered_map<int, int>> priceMaps(n);
+        vector<unordered_map<int, int>> city_price_map(n);
         for(int i = 0; i<flights.size(); i++)
         {
             int s = flights[i][0];
             int d = flights[i][1];
             int p = flights[i][2];
-            priceMaps[s][d] = p;
+            city_price_map[s][d] = p;
         }
         
-        queue<array<int, 2>> idxPriceQ;
-        for(auto i : priceMaps[src])
-            idxPriceQ.emplace(array<int, 2>{i.first, i.second});
+        queue<array<int, 2>> city_price_q;
+        for(auto city_price : city_price_map[src])
+            city_price_q.emplace(array<int, 2>{city_price.first, city_price.second});
         
         int depth = 0;
         int ans = 10e7;
-        bool isFin = false;
-        while(!idxPriceQ.empty())
+        while(!city_price_q.empty())
         {
-            int qSz = idxPriceQ.size();
-            unordered_map<int, int> tempPaths;
-            while(qSz--)
+            int sz = city_price_q.size();
+            unordered_map<int, int> next_city_price_map;
+            while(sz--)
             {
-                int idx = idxPriceQ.front()[0];
-                int prc = idxPriceQ.front()[1];
-                idxPriceQ.pop();
+                int city = city_price_q.front()[0];
+                int price = city_price_q.front()[1];
+                city_price_q.pop();
                 
-                if(prc > ans)
+                if(price > ans)
                     continue;
                 
-                if(idx == dst)
-                    ans = min(ans, prc);
+                if(city == dst)
+                    ans = min(ans, price);
                 
-                if(depth == k)
-                    isFin = true;
-                
-                if(priceMaps.size() == 0)
-                    continue;
-                
-                for(auto i : priceMaps[idx])
+                for(auto city_price : city_price_map[city])
                 {
-                    if(tempPaths.find(i.first) == tempPaths.end())
-                        tempPaths[i.first] = 10e7;
+                    if(next_city_price_map.find(city_price.first) == next_city_price_map.end())
+                        next_city_price_map[city_price.first] = 10e7;
                     
-                    tempPaths[i.first] = min(tempPaths[i.first], i.second+prc);
+                    int origin = next_city_price_map[city_price.first];
+                    next_city_price_map[city_price.first] = min(origin, city_price.second+price);
                 }
-
             }
             depth++;
-            for(auto i : tempPaths)
-                idxPriceQ.emplace(array<int, 2>{i.first, i.second});
-                
-            if(isFin)
+            if(depth == k+1)
                 break;
+
+            for(auto next_city_price : next_city_price_map)
+                city_price_q.emplace(array<int, 2>{next_city_price.first, next_city_price.second});
         }
-        
         if (ans == 10e7)
             return -1;
             
