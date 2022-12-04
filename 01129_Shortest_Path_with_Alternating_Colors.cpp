@@ -8,21 +8,17 @@ class Solution
 public:
     vector<int> shortestAlternatingPaths(int n, vector<vector<int>>& redEdges, vector<vector<int>>& blueEdges) 
     {
-        vector<int> ans(n, 400);
+        vector<int> ans(n, 10e4);
         ans[0] = 0;
         if(n == 1)
             return ans;
         
         vector<vector<int>> redMaps(n);
-        vector<vector<int>> blueMaps(n);
         for(auto& redEdge : redEdges)
-        {
             redMaps[redEdge[0]].emplace_back(redEdge[1]);
-        }
+        vector<vector<int>> blueMaps(n);
         for(auto& blueEdge : blueEdges)
-        {
             blueMaps[blueEdge[0]].emplace_back(blueEdge[1]);
-        }
         
         queue<int> q;
         q.emplace(0);
@@ -108,7 +104,7 @@ public:
         }
         
         for(int i = 0; i<n; i++)
-            if(ans[i] == 400)
+            if(ans[i] == 10e4)
                 ans[i] = -1;
         
         return ans;
