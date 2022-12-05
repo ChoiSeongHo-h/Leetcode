@@ -3,7 +3,6 @@ https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-un
 -> Accepted (Medium)
 */
 
-
 bool cmp(int a, int b)
 {
     return a>b;
@@ -12,14 +11,11 @@ bool cmp(int a, int b)
 class Solution
 {
 public:
-    
     int minDeletions(string s)
     {
         vector<int> nums(26, 0);
-        for(int i = 0; i<s.size(); i++)
-        {
-            nums[s[i]-97]++;
-        }
+        for(int i = 0; i<s.length(); i++)
+            nums[s[i]-'a']++;
 
         sort(nums.begin(), nums.end(), cmp);
         
@@ -32,7 +28,7 @@ public:
             {
                 *it1 = *it1-1;
                 cnt++;
-                if(*it0 == 0 && *it1 == 0)
+                if(*it1 == 0)
                 {
                     it0++;
                     it1++;
@@ -42,6 +38,7 @@ public:
             it0++;
             it1++;
         }
+
         return cnt;
     }
 };
