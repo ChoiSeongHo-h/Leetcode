@@ -11,9 +11,11 @@ public:
         int idx = -1;
         stack<pair<TreeNode*, int>> s;
         s.emplace(make_pair(root, -1));
-        vector<int> feature;
+        vector<int> feature(5e4, 0);
         vector<long long> acc;
+        acc.reserve(5e4);
         vector<int> parents;
+        parents.reserve(5e4);
         while(!s.empty())
         {
             auto node = s.top().first;
@@ -21,7 +23,6 @@ public:
             s.pop();
             
             ++idx;
-            feature.resize(idx+1);
             parents.emplace_back(parent);
             acc.emplace_back(node->val);
             if(node->right != nullptr)
@@ -37,11 +38,11 @@ public:
         }
       
         vector<deque<int>> childs(parents.size());
-        for(int i = 0; i<childs.size(); i++)
+        for(int child = 0; child<childs.size(); child++)
         {
-            int parent = parents[i];
+            int parent = parents[child];
             if(parent != -1)
-                childs[parent].emplace_back(i);
+                childs[parent].emplace_back(child);
         }
       
         idx = 0;
@@ -64,6 +65,7 @@ public:
                 int parent = parents[idx];
                 if(parent == -1)
                     break;
+                    
                 acc[parent] += acc[idx];
                 idx = parent;
                 continue;
