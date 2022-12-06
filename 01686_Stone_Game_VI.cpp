@@ -17,21 +17,17 @@ public:
             valuesVec[i][0] = aliceValues[i] + bobValues[i];
             valuesVec[i][1] = aliceValues[i];
             valuesVec[i][2] = bobValues[i];
-
         }
         
         sort(valuesVec.begin(), valuesVec.end());
 
         int aliceValue = 0;
-        int bobValue = 0;
         for(int i = valuesVec.size()-1; i>=0; i = i-2)
-        {
             aliceValue += valuesVec[i][1];
-        }
+        
+        int bobValue = 0;
         for(int i = valuesVec.size()-2; i>=0; i = i-2)
-        {
             bobValue += valuesVec[i][2];
-        }
         
         if(aliceValue > bobValue)
             return 1;
