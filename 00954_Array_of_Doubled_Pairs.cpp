@@ -8,8 +8,8 @@ class Solution
 public:
     bool canReorderDoubled(vector<int>& arr) 
     {
-        vector<int> pNs(1+10e4, 0);
-        vector<int> nNs(1+10e4, 0);
+        array<int, 100001> pNs{0, };
+        array<int, 100001> nNs{0, };
         for(auto i : arr)
         {
             if(i>=0)
