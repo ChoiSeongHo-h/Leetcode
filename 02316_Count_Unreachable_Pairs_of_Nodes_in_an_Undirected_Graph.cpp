@@ -3,98 +3,60 @@ https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-
 -> Accepted (Medium)
 */
 
-class Solution
+class Solution 
 {
 public:
     long long countPairs(int n, vector<vector<int>>& edges) 
     {
-        vector<bool> participated(n, false);
-        vector<vector<int>> completeEdges;
-        for(auto& edge : edges)
+        vector<vector<int>> graph(n);
+        for(int i = 0; i<edges.size(); ++i)
         {
-            completeEdges.emplace_back(vector<int>{edge[0], edge[1]});
-            completeEdges.emplace_back(vector<int>{edge[1], edge[0]});
-            participated[edge[0]] = true;
-            participated[edge[1]] = true;
+            graph[edges[i][0]].emplace_back(edges[i][1]);
+            graph[edges[i][1]].emplace_back(edges[i][0]);
         }
         
-        vector<vector<int>> groups(n, vector<int>{});
-        for(int i = 0; i<n; i++)
+        vector<int> group_nums;
+        vector<int> used(n, 0);
+        for(int i = 0; i<n; ++i)
         {
-            if(participated[i])
+            if(graph[i].size() == 0)
+            {
+                group_nums.emplace_back(1);
                 continue;
-            
-            groups[i] = vector<int>{i};
-        }
-        
-        for(int i = 0; i<completeEdges.size(); i++)
-        {
-            int from = completeEdges[i][0];
-            int next = completeEdges[i][1];
-            groups[from].emplace_back(next);
-        }
-        
+            }
+            if(used[i])
+                continue;
 
-        
-        vector<bool> isRoot(n, false);
-        for(int root = 0; root<n; root++)
-        {
-            if(!participated[root])
-                continue;
-            if(groups[root][0] == -1)
-                continue;
-                
-            isRoot[root] = true;
-            
             queue<int> q;
-            q.emplace(root);
-            vector<bool> emplaced(n, false);
-            emplaced[root] = true;
+            q.emplace(i);
+            unordered_set<int> emplaced;
+            emplaced.emplace(i);
+            int local_num = 0;
             while(!q.empty())
             {
-                int node = q.front();
+                int now = q.front();
                 q.pop();
-                
-                for(auto i : groups[node])
-                {
-                    if(emplaced[i])
-                        continue;
-                    
-                    emplaced[i] = true;
-                    q.emplace(i);
-                    if(node != root)
-                        groups[root].emplace_back(i);
-                }
-                groups[node][0] = -1;
-            }
-            
-        }
-        
 
-        vector<int> sums;
-        long long sum = 0;
-        for(int i = 0; i<n; i++)
-        { 
-            if(participated[i] == false)
-            {
-                sums.emplace_back(1);
-                sum += 1;
+                ++local_num;
+                used[now] = true;
+                for(auto next : graph[now])
+                {
+                    if(emplaced.find(next) != emplaced.end())
+                        continue;
+                    q.emplace(next);
+                    emplaced.emplace(next);
+                }
             }
-            else if(isRoot[i] == true)
-            {
-                sums.emplace_back((int)groups[i].size() + 1);
-                sum += (int)groups[i].size() + 1;
-            }
+            group_nums.emplace_back(local_num);
         }
         
         long long ans = 0;
-        for(int i = sums.size()-1; i>=0; --i)
+        long long acc = accumulate(group_nums.begin(), group_nums.end(), 0);
+        for(int i = 0; i<group_nums.size()-1; ++i)
         {
-            sum -= sums[i];
-            ans += (long long)sum*(long long)sums[i];
+            acc -= group_nums[i];
+            ans += group_nums[i]*acc;
         }
-        
-        //execption
         return ans;
     }
 };
