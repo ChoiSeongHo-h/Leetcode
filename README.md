@@ -14,36 +14,6 @@ https://leetcode.com/problems/swap-nodes-in-pairs/
 -
 https://leetcode.com/problems/trapping-rain-water/   
 
-00045_Jump_Game_II.cpp   
--
-https://leetcode.com/problems/jump-game-ii/   
-길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 도달 가능 한 최소 점프 수는?   
-n = 10e4, x = 10e3 -> O(nj)   
-1 : i까지 최소 점프 수를 나타나는 vec jumps 선언    
-2 : for i < n, jumps[i]를 작성    
-2-1 : for i+1 < j < i+x, jumps[j]를 조사    
--> jumps[j] = min(jumps[j], jumps[i]+1)     
---> jumps[i]에서 점프 한번 내에 도달 vs 기존 값     
-
-00053_Maximum_Subarray.cpp   
--   
-n 배열 nums에서 부분합이 최대가 되는 subarray의 합을 구하여라   
-n = 10e5   
-카데인 알고리즘 사용   
-1 : for nums[i] : nums에 대해 다음을 반복   
-1-1 : 로컬미니마 = max(이전 로컬미니마 + nums[i], nums[i])   
-1-2 : 글로벌미니마 = max(로컬미니마, 글로벌미니마)   
-🎯 새로 비교할 단일합 nums[i]와 이전단계 최대값+nums[i]와만 비교하면 됨   
--> nums[0] ~ nums[i]의 최대 부분합    
-🎯 잘못된 접근 방법 1 : l2r, r2l 합 배열 구하여 각 배열에서 가장 큰 음수를 가지는 idx 사이를 합하자   
--> nums = [-2,1,-3,4,-1,2,1,-5,4]     
--> l2r  = [-2,-1,-4,0,-1,1,2,-3,1]     
--> r2l  = [1,3,2,5,1,2,0,-1,4]       
---> l2r -4를 나타내는 idx 2, r2l -1을 나타내는 idx 7 사이를 합하자     
----> 양수가 대부분이면 작동하나, 음수에 지배당하면 잘 동작하지 않음   
-🎯 잘못된 접근 방법 2 : nums의 음수간 구간을 정하여 합하여 비교해 보자   
--> 곱에서는 잘 동작할 수 있으나, 주어진 문제는 합의 문제   
-
 00055_Jump_Game.cpp
 -
 https://leetcode.com/problems/jump-game/   
