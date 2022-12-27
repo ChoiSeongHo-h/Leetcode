@@ -14,23 +14,6 @@ https://leetcode.com/problems/swap-nodes-in-pairs/
 -
 https://leetcode.com/problems/trapping-rain-water/   
 
-00055_Jump_Game.cpp
--
-https://leetcode.com/problems/jump-game/   
-길이 n 배열 nums에서 배열의 값 x만큼 다음 칸으로 점프 가능 할 때, 마지막에 닿을 수 있는가?   
-n = 10e4, x = 10e5    
-점프하여 중간에 끊김이 없어야 함   
-1 : 최대 도달 idx를 나타내는 reach 선언    
-2 : for i < n, reach가 idx보다 작으면 끊긴것. false    
--> 그렇지 않으면 reach = max(reach, i+x)     
-
-00062_Unique_Paths.cpp
--
-https://leetcode.com/problems/unique-paths/   
-m*n 그리드에서 오른쪽 아래로 가는 unique pathes 수를 반환    
-m, n = 100   
-1 : for tale[i][j] = table[i-1][j]+table[i][j-1]   
-
 00074_Search_a_2D_Matrix.cpp
 -
 https://leetcode.com/problems/search-a-2d-matrix/   
