@@ -14,36 +14,9 @@ https://leetcode.com/problems/swap-nodes-in-pairs/
 -
 https://leetcode.com/problems/trapping-rain-water/   
 
-00074_Search_a_2D_Matrix.cpp
--
-https://leetcode.com/problems/search-a-2d-matrix/   
-m*n 그리드에서 targe을 찾으려 함    
-그리드 : 좌우, 상하 방향으로 값 x가 정렬됨    
--10e4 < x, target < 10e4    
-m, n = 100    
-그리드를 1d로 보고 이진탐색   
-1 : left=0, right=mn, mid=(right+left)/2   
-2 : if target < x, right=mid    
--> else left=mid+1   
-🎯 left는 서치 idx 포함, right는 서치 idx 벗어남     
-🎯 mid는 나누기가 반복되면 왼쪽으로 치우침   
-🎯 따라서 치우침을 보정하기 위해 right=mid or left=mid+1   
-
 00092_Reverse_Linked_List_II.py   
 -
 https://leetcode.com/problems/reverse-linked-list-ii/   
-
-00097_Interleaving_String.cpp   
--
-https://leetcode.com/problems/interleaving-string/   
-str s1 s2를 잘 섞어 s3을 만들 수 있는가?     
-len(s1), len(s2) = 100
-1 : 2차원 (s1_sz+1)*(s2_sz+1) dp 테이블 생성    
--> 세로 : s1 방향, 가로 : s2 방향    
-2 : 0행, 0열 정의   
-3 : s1이 추가되어 s3가 되거나, s2가 추가되어 s3가 된다면 true   
-🎯 입력보다 1 큰 각 tb 차원    
-🎯 s1 혹은 s2 하나로만 s3가 이루어져도 true     
 
 00098_Validate_Binary_Search_Tree.cpp    
 -    
