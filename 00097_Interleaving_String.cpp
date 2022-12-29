@@ -13,9 +13,7 @@ public:
         int s3Sz = s3.size();
         if(s1Sz+s2Sz != s3Sz)
             return false;
-        if(s1Sz == 0 && s2==s3)
-            return true;
-        if(s2Sz == 0 && s1==s3)
+        if(s1Sz == 0 && s2==s3 || s2Sz == 0 && s1==s3)
             return true;
         
         vector<vector<bool>> table(s1Sz+1, vector<bool>(s2Sz+1, false));
@@ -23,16 +21,12 @@ public:
         for (int j = 1; j<s2Sz+1; j++)
         {
             if(table[0][j-1] == true && s2[j-1] == s3[j-1])
-            {
                 table[0][j] = true;
-            }
         }
         for (int i = 1; i<s1Sz+1; i++)
         {
             if(table[i-1][0] == true && s1[i-1] == s3[i-1])
-            {
                 table[i][0] = true;
-            }
         }
         
         for (int i = 1; i<s1Sz+1; i++)
