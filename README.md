@@ -18,28 +18,6 @@ https://leetcode.com/problems/trapping-rain-water/
 -
 https://leetcode.com/problems/reverse-linked-list-ii/   
 
-00098_Validate_Binary_Search_Tree.cpp    
--    
-https://leetcode.com/problems/validate-binary-search-tree/   
-n노드 이진 탐색 트리가 맞나 검사    
-n = 10e4    
-각 노드 값은 하항과 상한을 가짐    
-1 : 완전 탐색으로 상한과 하한을 넘겨주며 순회    
-2 : 왼쪽 노드의 값이 자신의 값보다 크거나, 자기 하한의 값이 왼쪽 노드 값보다 크거나 같으면 ret false    
-2-1 : 왼쪽 노드를 탐색, 이 때 하한은 그대로, 상한은 자신의 값    
-3 : 오른쪽 노드의 값이 자신의 값보다 작거나, 오른쪽 노드 값이 자기 상한의 값보다 크거나 같으면 ret false    
-3-1 : 오른쪽 노드를 탐색, 이 때 상한은 그대로, 하한은 자신의 값    
-🎯 상한과 하한을 넘겨주며 순회한다는 발상    
-🎯 자기 하한의 값이 왼쪽 노드 값보다 크거나 같으면 안 됨    
-🎯 오른쪽 노드 값이 자기 상한의 값보다 크거나 같으면 안 됨    
-
-00107_Binary_Tree_Level_Order_Traversal_II.cpp   
--
-https://leetcode.com/problems/binary-tree-level-order-traversal-ii/   
-이진트리 값을 depth-wise로 반환   
-1 : 이진트리를 depth-wise로 순회    
-2 : depth-wise 생성된 vec에 값 삽입, depth가 끝나면 vec 요소를 옮겨담음    
-
 00117_Populating Next_Right_Pointers_in_Each_Node_II.cpp    
 -
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/   
