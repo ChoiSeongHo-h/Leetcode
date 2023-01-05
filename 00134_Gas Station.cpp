@@ -16,29 +16,25 @@ public:
             net += gap[i];
         }
         if(net < 0)
-        {
             return -1;
-        }
         if(gap.size() == 1)
-        {
             return 0;
-        }
         
         int netL = 0;
         int netR = net;
-        int resIdx = 0;
-        int resNet = netR;
+        int bestIdx = 0;
+        int bestNet = netR;
         for (int i = 0; i<gap.size(); i++)
         {        
-            if (netR > resNet)
+            if (netR > bestNet)
             {
-                resNet = netR;
-                resIdx = i;
+                bestNet = netR;
+                bestIdx = i;
             }
             netL += gap[i];
             netR -= gap[i];
         }
 
-        return resIdx;
+        return bestIdx;
     }
 };
