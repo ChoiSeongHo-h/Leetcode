@@ -18,29 +18,6 @@ https://leetcode.com/problems/trapping-rain-water/
 -
 https://leetcode.com/problems/reverse-linked-list-ii/   
 
-00117_Populating Next_Right_Pointers_in_Each_Node_II.cpp    
--
-https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/   
-이진트리를 depth-wise 순회하며 왼쪽노드의 next가 오른쪽 노드를 포인팅하게 함    
-1 : 이진트리를 depth-wise 순회    
-2 : 전역으로 이전 노드를 포인팅하는 포인터 선언   
-3 : 만약 depth-wise 첫 노드가 아니라면 이전 노드의 next가 현 노드를 가리키게 함   
-
-00134_Gas Station.cpp   
--
-https://leetcode.com/problems/gas-station/   
-n vec gas, cost가 주어짐, 각 i에서 충전량, 소모량을 나타냄, 어떤 i에서 시작해야 주유소를 circular 순회할 수 있는가?    
-n = 10e5 -> O(n)  
-해는 유일    
-1 : vec gap을 선언하여 순수 이득을 계산    
-2 : net을 선언하여 1 cycle 순수 이득 net을 대입    
-3 : n까지 순회하며 i에서 왼쪽 net netL, 오른쪽 net netR을 계산    
--> 초기에 0, net이며, gap[i]를 각각 빼고 더하여 구할 수 있음    
--> 해가 유일하므로 순 이득이 나는 곳은 하나임    
---> 이 곳은 netR이 최대화됨    
-4 : netR이 최대화되는 곳을 찾음    
-🎯 왼쪽 net, 오른쪽 net의 성질을 관찰    
-
 00152_Maximum_Product_Subarray.cpp    
 -
 https://leetcode.com/problems/maximum-product-subarray/   
