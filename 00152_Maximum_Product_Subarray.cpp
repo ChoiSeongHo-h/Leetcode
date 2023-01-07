@@ -21,7 +21,7 @@ public:
         }
         idcs0.emplace_back(nSz);
         
-        vector<array<int, 2>> zIntervals;
+        vector<array<int, 2>> nonzeroIntervals;
         for(int i = 0; i<idcs0.size()-1; i++)
         {
             int iIdx = idcs0[i]+1;
@@ -29,17 +29,17 @@ public:
             if(iIdx == fIdx)
                 continue;
             
-            zIntervals.emplace_back(array<int, 2>{iIdx, fIdx});
+            nonzeroIntervals.emplace_back(array<int, 2>{iIdx, fIdx});
         }
         
-        vector<array<int, 2>> cIntervals;
-        for(auto& zInterval : zIntervals)
+        vector<array<int, 2>> posIntervals;
+        for(auto& nonzeroInterval : nonzeroIntervals)
         {
             int negCnt = 0;
-            int lIdx = zInterval[1];
-            int rIdx = zInterval[0];
+            int lIdx = nonzeroInterval[1];
+            int rIdx = nonzeroInterval[0];
             
-            for(int i = zInterval[0]; i<zInterval[1]; i++)
+            for(int i = nonzeroInterval[0]; i<nonzeroInterval[1]; i++)
             {
                 if(nums[i] > 0)
                     continue;
@@ -50,31 +50,27 @@ public:
             }
             
             if(negCnt%2 == 0)
-            {
-                cIntervals.emplace_back(zInterval);
-            }
+                posIntervals.emplace_back(nonzeroInterval);
             else
             {
-                if(zInterval[0] != rIdx)
-                    cIntervals.emplace_back(array<int, 2>{zInterval[0], rIdx});
-                if(lIdx+1 != zInterval[1])
-                    cIntervals.emplace_back(array<int, 2>{lIdx+1, zInterval[1]});
+                if(nonzeroInterval[0] != rIdx)
+                    posIntervals.emplace_back(array<int, 2>{nonzeroInterval[0], rIdx});
+                if(lIdx+1 != nonzeroInterval[1])
+                    posIntervals.emplace_back(array<int, 2>{lIdx+1, nonzeroInterval[1]});
             }
         }
         
         int ans = 0;
-        for(auto& cInterval : cIntervals)
+        for(auto& posInterval : posIntervals)
         {
-            int cross = 1;
-            for(int i = cInterval[0]; i<cInterval[1]; ++i)
-            {
-                cross *= nums[i];
-            }
-            ans = max(ans, cross);
+            int product = 1;
+            for(int i = posInterval[0]; i<posInterval[1]; ++i)
+                product *= nums[i];
+
+            ans = max(ans, product);
         }
-        
-        
         
         return ans;
     }
 };
+
