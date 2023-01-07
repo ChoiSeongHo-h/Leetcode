@@ -18,38 +18,6 @@ https://leetcode.com/problems/trapping-rain-water/
 -
 https://leetcode.com/problems/reverse-linked-list-ii/   
 
-00152_Maximum_Product_Subarray.cpp    
--
-https://leetcode.com/problems/maximum-product-subarray/   
-n길이 nums의 곱이 최대가 되는 연속적인 subarray의 곱을 구함      
-n = 10e4 -> O(n)   
-1 : 0 사이의 subarrays를 구함      
-2 : 1의 subarrays[i]에 음수가 짝수개면 그대로 후보에 포함   
-3 : 1의 subarrays[i]에 음수가 홀수개면 뒤의 음수를 하나 뺀 subarray와 앞의 음수를 하나 뺀 subarrays를 후보에 포함   
--> 3 -1 2 5 3 -1 -1   
---> (3 -1 2 5 3 -1) -1 and 3 -1 (2 5 3 -1 -1)   
--> 음수를 짝수개로 맞춘다는 뜻   
-4 : 후보를 모두 곱하여 최종 결과 계산   
-🎯 음수가 짝수개이기만 한다면, subarray가 길면 길수록 값이 커지거나 같다는 발상       
-
-00153_Find_Minimum_in_Rotated_Sorted_Array.cpp   
--
-https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/   
-전체를 circular shift하여 정렬할 수 있는 n길이 nums가 주어질 때 최소값을 log(n)으로 찾아라    
-nums는 [4,5,6,7,0,1,2]와 같이 주어짐       
--> 0을 찾아야 함       
-1 : 이진탐색하는 구간에서 좌측 값이 우측 값보다 커야 함       
--> ex : [0 1 2]       
--> 이 경우 좌측값을 ret       
---> 오직 이 경우에만 찾을 수 있음       
----> 이 경우가 아니라면 무조건 좌측 값이 우측보다 큼       
-2 : 좌측 값이 중간 값보다 작다면 구간을 오른쪽으로 설정       
--> if(nums[left] < nums[mid]) then, left = mid+1       
-3 : 좌측 값이 중간 값보다 크다면 구간을 왼쪽으로 설정       
--> else then, right = mid;       
-🎯 이 경우 초기 right는 n-1을 가짐       
-🎯 마찬가지로 나누기를 반복하며 구간이 왼쪽으로 치우쳐지므로 이를 보정       
-🎯 구간 재설정 방법(2, 3)을 생각해 볼만 함       
 
 00207_Course_Schedule.cpp    
 -     
