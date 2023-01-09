@@ -31,9 +31,7 @@ public:
         stack<int> path;
         vector<bool> done(numCourses, false);
         for(auto& head : heads)
-        {
             courseDepthStack.emplace(array<int, 2>{head, 1});
-        }
         
         while(!courseDepthStack.empty())
         {
