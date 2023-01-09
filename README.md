@@ -18,37 +18,6 @@ https://leetcode.com/problems/trapping-rain-water/
 -
 https://leetcode.com/problems/reverse-linked-list-ii/   
 
-
-00207_Course_Schedule.cpp    
--     
-https://leetcode.com/problems/course-schedule/    
-numCourses와 prerequisites[i] = [ai, bi]이 주어짐. b를 들어야 a를 들을 수 있을 때, numCourses만큼 수업을 들을 수 있는가?    
-numCourses = 2000    
-len(prerequisites) = 5000    
-prerequisites에 사이클이 생기나 검사해야 함        
-1 : vec<vec> prereqMap, uset heads를 구성    
--> prereqMap : prereqMap[a] = b1, b2, ...    
--> heads : b가 포함되면 제거하고, a를 삽입    
---> head는 이를 선행으로 하는 요소가 없음을 의미, head들은 선행을 요구    
----> 이를 map에 넣어 선행 요구사항을 검사할 것임    
-2 : courseDepthStack을 구성    
--> courseDepthStack : 과목 코드와 dfs depth로 구성된 stack    
--> head들과 depth 1을 넣음        
-2-1 : 지금까지 경로를 저장할 stack path를 선언    
-2-2 : path와 연동되어 지금 패스 방문을 의미하는 vec visited 선언    
-2-3 : visited와 유사하지만, 철회하지 않는 vec done 선언    
-3 : courseDepthStack이 비지 않으면 다음을 수행    
-3-1 : depth와 차원을 맞춰 path를 pop하고 visited를 false로 수정(철회)    
-3-2 : 현재 course를 path와 visited, done에 등록    
-3-3 : for nest : prereqMap[course]에 대해    
-3-3-1 : visited라면(cycle 이라면) ret false    
-3-3-2 : done이라면 이미 조사했으므로 continue    
-3-3-3 : 그렇지 않다면 뎁스를 증가시켜 courseDepthStack에 삽입    
-4 : ret true    
-🎯 선행 조건 문제에서는 cycle이 생기면 fail    
--> depth와 path로 구성된 dfs로 조사    
-🎯 done을 두어 visited와는 별개로, 이미 조사한 사이클에 대한 반복을 피함    
-
 00209_Minimum_Size_Subarray_Sum.cpp    
 -   
 https://leetcode.com/problems/minimum-size-subarray-sum/   
