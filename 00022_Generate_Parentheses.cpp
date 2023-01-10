@@ -13,9 +13,7 @@ public:
             for(int j = i; j < targetIdx; j++)
             {
                 if(i+j != targetIdx)
-                {
                     continue;
-                }
                 
                 for(auto ie : subMaps[i])
                 {
@@ -32,9 +30,7 @@ public:
     void Generate(vector<unordered_set<string>>& subMaps, int targetIdx)
     {
         for(auto i : subMaps[targetIdx-1])
-        {
             subMaps[targetIdx].emplace("("+i+")");
-        }
     }
     
     vector<string> generateParenthesis(int n)
@@ -55,9 +51,7 @@ public:
         }
         
         for(auto i:subMaps[n])
-        {
             res.emplace_back(i);
-        }
         return res;
     }
 };
