@@ -1,6 +1,8 @@
 # Leetcode
 
-리트코드 문풀(cpp / python)
+
+![LeetCode Stats](https://leetcard.jacoblin.cool/csh8052g?theme=light&font=Arimo)   
+리트코드 문풀(cpp / python)    
 
 00015._3Sum.py 
 -
