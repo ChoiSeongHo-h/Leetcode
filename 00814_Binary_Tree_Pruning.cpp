@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/longest-palindromic-substring/
+https://leetcode.com/problems/binary-tree-pruning/
 -> Accepted (Medium)
 """
   
@@ -11,13 +11,9 @@ public:
         if(node->left == nullptr && node->right == nullptr)
         {
             if(node->val == 1)
-            {
                 return true;
-            }
-            else
-            {
-                return false;
-            }
+          
+            return false;
         }
 
         bool left_has_1 = false;
@@ -44,6 +40,7 @@ public:
         bool root_has_1 = has_1(root);
         if(root_has_1 == false)
             return nullptr;
+      
         return root;
     }
 };
