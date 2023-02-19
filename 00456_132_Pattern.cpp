@@ -3,6 +3,7 @@ https://leetcode.com/problems/132-pattern/
 -> Accepted (Medium)
 """
   
+// O(logN)
 class Solution 
 {
 public:
@@ -35,6 +36,41 @@ public:
             if(!aleady_has)
                 check.erase(prev(it));
             check.emplace(nums[i]);
+        }
+
+        return false;
+    }
+};
+
+// using stack, O(N)
+class Solution 
+{
+public:
+    bool find132pattern(vector<int>& nums) 
+    {
+        int sz = nums.size();
+        if(sz<3)
+            return false;
+
+        stack<int> s;
+        vector<int> mins(sz);
+        mins[0] = nums[0];
+
+        for(int i = 1; i<sz; ++i) 
+            mins[i] = min(mins[i - 1], nums[i]);
+
+        for(int i = sz-1; i>0; --i)
+        {
+            if(nums[i] <= mins[i])
+                continue;
+
+            while(!s.empty() && s.top() <= mins[i])
+                s.pop();
+
+            if(!s.empty() && s.top() < nums[i])
+                return true;
+
+            s.emplace(nums[i]);
         }
 
         return false;
