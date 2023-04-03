@@ -12,10 +12,6 @@ https://leetcode.com/problems/3sum/
 -
 https://leetcode.com/problems/swap-nodes-in-pairs/   
 
-00042_Trapping_Rain_Water.py
--
-https://leetcode.com/problems/trapping-rain-water/   
-
 00092_Reverse_Linked_List_II.py   
 -
 https://leetcode.com/problems/reverse-linked-list-ii/   
