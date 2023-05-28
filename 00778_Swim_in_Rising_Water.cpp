@@ -44,3 +44,67 @@ public:
         return ans;
     }
 };
+
+// binary search
+class Solution 
+{
+public:
+    int swimInWater(vector<vector<int>>& grid) 
+    {
+        vector<int> dx{-1, 0, 0, 1};
+        vector<int> dy{0, -1, 1, 0};
+        int n = grid.size();
+      
+        int l = 0;
+        int r = n*n;
+        while(l<r)
+        {
+            int mid = (l+r)/2;
+            vector<vector<int>> grid_new(n, vector<int>(n));
+            for(int i = 0; i<n; ++i)
+            {
+                for(int j = 0; j<n; ++j)
+                {
+                    grid_new[i][j] = grid[i][j]-mid+1;
+                    grid_new[i][j] = max(grid_new[i][j], 1);
+                }
+            }
+
+            stack<vector<int>> s;
+            s.emplace(vector<int>{0, 0});
+            grid_new[0][0] *= -1;
+            int success = 0;
+            while(!s.empty())
+            {
+                int y = s.top()[0];
+                int x = s.top()[1];
+                int val = grid_new[y][x];
+                s.pop();
+
+                if(y == n-1 && x == n-1)
+                {
+                    success = 1;
+                    break;
+                }
+
+                for(int i = 0; i<4; ++i)
+                {
+                    int y_new = y+dy[i];
+                    int x_new = x+dx[i];
+                    if(y_new == -1 || y_new == n || x_new == -1 || x_new == n || grid_new[y_new][x_new] < 0 || grid_new[y_new][x_new] != -val)
+                        continue;
+                    
+                    s.emplace(vector<int>{y_new, x_new});
+                    grid_new[y_new][x_new] *= -1;
+                }
+            }
+
+            if(success)
+                r = mid;
+            else
+                l = mid+1;
+        }
+        
+        return l;
+    }
+};
